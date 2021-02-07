@@ -2,4 +2,4 @@
 Use Python 🐍 to improve productivity.
 
 ### Easy Excel
-[简化 Excel 处理操作](ExcelEasy/README.md)
+[简化 Excel 处理操作](ExcelEasy)
