@@ -1,7 +1,4 @@
 # minipy 迷你派 🥧
-
-Use Python to improve productivity.
-
 使用 Python 提高自动化办公效率。
 
 ## Excel Easy
