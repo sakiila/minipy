@@ -25,13 +25,62 @@
 	<key>createdby</key>
 	<string>bob</string>
 	<key>description</key>
-	<string></string>
+	<string>时间转换</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>TimeConvert</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>103</integer>
+				<key>keyword</key>
+				<string>time</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>正在转换中 …</string>
+				<key>script</key>
+				<string>python3 timestamp.py {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>请输入时间、时间戳或now</string>
+				<key>title</key>
+				<string>时间转换</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>47F134D8-DDC1-4A1F-B7DE-2CE2B756CC33</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -51,66 +100,16 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>time</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>正在转换中 …</string>
-				<key>script</key>
-				<string>query="{query}"
-
-echo -n $query</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>请输入时间、时间戳或者now</string>
-				<key>title</key>
-				<string>时间转换</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>47F134D8-DDC1-4A1F-B7DE-2CE2B756CC33</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>时间转换。
+输入 time + 日期/时间戳，显示转换后对应的结果。</string>
 	<key>uidata</key>
 	<dict>
 		<key>47F134D8-DDC1-4A1F-B7DE-2CE2B756CC33</key>
 		<dict>
 			<key>xpos</key>
-			<integer>250</integer>
+			<integer>170</integer>
 			<key>ypos</key>
 			<integer>210</integer>
 		</dict>
@@ -122,7 +121,11 @@ echo -n $query</string>
 			<integer>210</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.3</string>
 	<key>webaddress</key>
-	<string>me.bob</string>
+	<string>https://baobo.me/</string>
 </dict>
 </plist>
