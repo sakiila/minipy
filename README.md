@@ -4,8 +4,11 @@
 ## Excel Easy
 [简化 Excel 处理操作](ExcelEasy)
 
-## Merge Files
-合并多个文件
-
 ## Alfred Workflow
 [Alfred 时间格式转换](AlfredWorkflow)
+
+## Login One Click
+[一键登录](LoginOneClick)
+
+## Git Update One Click
+[一键更新 Git 仓库](GitUpdateOneClick)
