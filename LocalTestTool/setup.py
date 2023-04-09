@@ -11,10 +11,11 @@ APP = ['localTest.py']
 DATA_FILES = []
 OPTIONS = {'iconfile': 'app.icns',
            'plist': {
-             'CFBundleName': 'Local Test',  # 应用名
-             'CFBundleDisplayName': 'Local Test',  # 应用显示名
-             'CFBundleVersion': '1.0.0',  # 应用版本号
-             'CFBundleIdentifier': 'lt',  # 应用包名、唯一标识
+               'CFBundleName': 'LocalTest',  # 应用名
+               'CFBundleDisplayName': 'LocalTest',  # 应用显示名
+               'CFBundleVersion': '1.1.0',  # 应用版本号
+               'CFBundleIdentifier': 'lt',  # 应用包名、唯一标识
+               'NSHumanReadableCopyright': 'Copyright © 2023 Bob Bao. All rights reserved.',  # 可读版权
            }
            }
 

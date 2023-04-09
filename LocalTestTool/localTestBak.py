@@ -1,10 +1,7 @@
 import os
 import signal
 import subprocess
-import time
 import webbrowser
-import shutil
-from distutils.spawn import find_executable
 
 import PySimpleGUI as sg
 
@@ -50,8 +47,8 @@ def open_window():
          sg.Text('PID:'),
          sg.Text(size=(40, 1), key='pid_grooming')],
 
-        [sg.Frame('Output', font='Helvetica 16', layout=[
-            [sg.Output(size=(100, 10), font='Helvetica 10')]])],
+        # [sg.Frame('Output', font='Helvetica 16', layout=[
+        #     [sg.Output(size=(100, 10), font='Helvetica 10')]])],
 
         [sg.Text('Grey Gateway:', font=('Helvetica', 16)),
          sg.Button('https://grey.t2.moego.pet',
@@ -69,7 +66,6 @@ def open_window():
 
 
 def main():
-    global ps_main_pid, ps_business_pid, ps_customer_pid
     window = open_window()
 
     while True:
@@ -77,36 +73,25 @@ def main():
 
         def run_service(start_command, window_button, window_pid):
             window_button.update(disabled=True)
-            # env = os.environ["PATH"]
-            # print('env: ', env)
-            # _exec = str(env.split(':')[0])
-            # print('exec: ', _exec)
-            # path = shutil.which('ktctl')
-            # print('shutil.which path: ', path)
-            # path = find_executable('ktctl')
-            # print('find_executable path: ', path)
-            # path = '/opt/homebrew/bin/ktctl'
-            # window.refresh()
-            # time.sleep(2)
-            # start_command = start_command.replace('ktctl', str(path).strip())
+            # start_command = ['ls', '-al']
             print('start_command: ', start_command)
+            print('start_command: ', ' '.join(start_command))
             try:
-                ps = subprocess.Popen(start_command,
-                                      shell=True, stdout=subprocess.PIPE, encoding='utf-8',
+                ps = subprocess.Popen(start_command, stdout=subprocess.PIPE, encoding='utf-8',
                                       stderr=subprocess.STDOUT, close_fds=False, preexec_fn=os.setsid)
                 # 恢复为默认状态
                 signal.signal(signal.SIGPIPE, signal.SIG_DFL)
                 out = ''
-                for line in ps.stdout.readline().rstrip():
-                    out += line
-                    if not line:
-                        window_button.metadata = True
-                        window_button.update(image_data=toggle_btn_on)
-                        window_pid.update(ps.pid)
-                        window_button.update(disabled=False)
-                        break
-                print(out)
-                return ps.pid
+                # for line in ps.stdout.readline().rstrip():
+                #     out += line
+                    # if not line:
+                    #     break
+                # print(out)
+                window_button.metadata = True
+                window_button.update(image_data=toggle_btn_on)
+                window_pid.update(ps.pid)
+                window_button.update(disabled=False)
+                return ps
             except Exception as e:
                 sg.Print(f'execute got exception: {e}')
             # window_button.metadata = True
@@ -142,11 +127,11 @@ def main():
             connect_window = window['connect_main']
             pid_window = window['pid_main']
             if connect_window.metadata is False:
-                command = 'echo ' + str.strip(values[
-                                                  'password']) + ' | sudo -S ktctl connect -n ns-testing --withLabel "sidecar.istio.io/inject=true"'
-                ps_main_pid = run_service(command, connect_window, pid_window)
+                command = ['echo', str.strip(values['password']), '|', 'sudo', '-S', 'ktctl', 'connect', '-n',
+                           'ns-testing', '--withLabel', '"sidecar.istio.io/inject=true"']
+                ps_main = run_service(command, connect_window, pid_window)
             else:
-                stop_service(ps_main_pid, connect_window, pid_window)
+                stop_service(ps_main.pid, connect_window, pid_window)
         elif event == 'connect_business':
             if values['password'] == '':
                 sg.popup_quick_message('Please Input Password', font=('Helvetica', 16), background_color='red',
@@ -159,11 +144,11 @@ def main():
             connect_window = window['connect_business']
             pid_window = window['pid_business']
             if connect_window.metadata is False:
-                command = 'ktctl preview moego-service-business-debug-' + str.strip(
-                    values['name']) + ' --expose 9203:9203 -n ns-testing --withLabel "sidecar.istio.io/inject=true"'
-                ps_business_pid = run_service(command, connect_window, pid_window)
+                command = ['ktctl', 'preview', 'moego-service-business-debug-' + str.strip(values['name']), '--expose',
+                           '9203:9203', '-n', 'ns-testing', '--withLabel', '"sidecar.istio.io/inject=true"']
+                ps_business = run_service(command, connect_window, pid_window)
             else:
-                stop_service(ps_business_pid, connect_window, pid_window)
+                stop_service(ps_business.pid, connect_window, pid_window)
         elif event == 'connect_customer':
             if values['password'] == '':
                 sg.popup_quick_message('Please Input Password', font=('Helvetica', 16), background_color='red',
@@ -176,11 +161,11 @@ def main():
             connect_window = window['connect_customer']
             pid_window = window['pid_customer']
             if connect_window.metadata is False:
-                command = 'ktctl preview moego-service-customer-debug-' + str.strip(
-                    values['name']) + ' --expose 9201:9201 -n ns-testing --withLabel "sidecar.istio.io/inject=true"'
-                ps_customer_pid = run_service(command, connect_window, pid_window)
+                command = ['ktctl', 'preview', 'moego-service-customer-debug-' + str.strip(values['name']), '--expose',
+                           '9203:9203', '-n', 'ns-testing', '--withLabel', '"sidecar.istio.io/inject=true"']
+                ps_customer = run_service(command, connect_window, pid_window)
             else:
-                stop_service(ps_customer_pid, connect_window, pid_window)
+                stop_service(ps_customer.pid, connect_window, pid_window)
         elif event == 'connect_grooming':
             if values['password'] == '':
                 sg.popup_quick_message('Please Input Password', font=('Helvetica', 16), background_color='red',
@@ -193,8 +178,8 @@ def main():
             connect_window = window['connect_grooming']
             pid_window = window['pid_grooming']
             if connect_window.metadata is False:
-                command = 'ktctl preview moego-service-grooming-debug-' + str.strip(
-                    values['name']) + ' --expose 9206:9206 -n ns-testing --withLabel "sidecar.istio.io/inject=true"'
+                command = ['ktctl', 'preview', 'moego-service-grooming-debug-' + str.strip(values['name']), '--expose',
+                           '9203:9203', '-n', 'ns-testing', '--withLabel', '"sidecar.istio.io/inject=true"']
                 ps_grooming = run_service(command, connect_window, pid_window)
             else:
                 stop_service(ps_grooming.pid, connect_window, pid_window)
