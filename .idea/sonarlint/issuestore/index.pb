@@ -23,3 +23,7 @@ J
 GitUpdateOneClick/setup.py,5/a/5af689e03be94ef5bd3cc80cf1ee560afd6c6dd2
 W
 'AlfredWorkflow/TimeConvert/timestamp.py,e/c/ec3659744cc4d6101c2316eeafe36ef4001af1e0
+M
+LocalTestTool/localTestBak.py,e/9/e93cf74108063ce0aaf9d0084d8e3146091f4e7f
+J
+LocalTestTool/localTest.py,2/a/2ad809184bfb50eafb08b6731c96a0b0a11e52b7

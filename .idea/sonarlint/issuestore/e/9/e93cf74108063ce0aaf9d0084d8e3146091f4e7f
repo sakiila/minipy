@@ -1,0 +1,8 @@
+
+zpython:S1192x"VDefine a constant instead of duplicating this literal 'Please Input Password' 4 times.(Ÿ¬ŠŸûÿÿÿÿ8ÓÉÓĞ÷0
+}python:S1192|"YDefine a constant instead of duplicating this literal 'Please Input Branch Name' 4 times.(¬óŸıÿÿÿÿ8ÓÉÓĞ÷0
+python:S1192ƒ"_Define a constant instead of duplicating this literal '"sidecar.istio.io/inject=true"' 4 times.(¢ı¨Ù8ÓÉÓĞ÷0
+rpython:S3776D"TRefactor this function to reduce its Cognitive Complexity from 57 to the 15 allowed.(œŸ²_8ÓÉÓĞ÷0
+Kpython:S1481T"'Remove the unused local variable "out".(Ïí®Çüÿÿÿÿ8ŸØùĞ÷0
+=python:S125L"Remove this commented out code.(ë–„•8ÓÉÓĞ÷0
+Bpython:S125a"Remove this commented out code.(Çí¸Æşÿÿÿÿ8ÓÉÓĞ÷0
