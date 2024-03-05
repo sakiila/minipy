@@ -27,3 +27,7 @@ M
 LocalTestTool/localTestBak.py,e/9/e93cf74108063ce0aaf9d0084d8e3146091f4e7f
 J
 LocalTestTool/localTest.py,2/a/2ad809184bfb50eafb08b6731c96a0b0a11e52b7
+C
+TelegramBot/main.py,7/3/737e7b293d98c0036201087d0860860e0cdc19cf
+D
+TelegramBot/ntrrr.py,6/5/65cb8d7e4d68d8fe836b7e466a2768f4d6b254c0

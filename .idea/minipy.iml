@@ -5,7 +5,10 @@
       <excludeFolder url="file://$MODULE_DIR$/LocalTestTool/venv" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="c34900a8-b23d-4b5c-82a6-b4e46aeeacda" />
   </component>
 </module>
